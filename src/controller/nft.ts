@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import axios from "axios";
-import {createNFTList, findMyNFTData} from "../data/nft";
+import {createNFTList, findMyNFTData, removeNFT} from "../data/nft";
 import {NFT} from "../type/nft";
 
 export const createMetadata = async (req: Request, res: Response) => {
@@ -9,21 +9,28 @@ export const createMetadata = async (req: Request, res: Response) => {
     const NFTMetadata = urlArray.map(async (url: string) => {
         const createNFT = await createNFTList({ address, url, network })
         const metadata = await getNFTdata(url);
-        return { id: createNFT.id, ...metadata }
+        return { ...createNFT, ...metadata }
     })
     const metadataArray = await Promise.all(NFTMetadata);
-    res.status(200).json(metadataArray);
+    res.status(201).json(metadataArray);
 }
 
 export const getMetadata = async (req: Request, res: Response) => {
   const { address, network } = req.query;
   const nftData = await findMyNFTData(address as string, network as string);
   const NFTMetadata = nftData.map(async (nft: NFT) => {
+    console.log(nft)
     const metadata = await getNFTdata(nft.url);
-    return { id: nft.id, ...metadata }
+    return { ...nft, ...metadata }
   })
   const metadataArray = await Promise.all(NFTMetadata);
   res.status(200).json(metadataArray);
+}
+
+export const deleteMetadata = async (req: Request, res: Response) => {
+  const { id } = req.query;
+  await removeNFT(parseInt(id as string))
+  res.status(200).json({ "message" : "Success delete your NFT" });
 }
 
 const getNFTdata = async (url: string) => {

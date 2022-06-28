@@ -53,10 +53,10 @@ const createNFT = async (nftData: NFT) => {
   return Nft.create(nftData).then((data) => data.dataValues);
 }
 
-// export async function removeNFT(id) {
-//     return Nft.findByPk(id)
-//     .then((chat) => {
-//         chat.destroy();
-//     });
-//
-// }
+export const removeNFT = async (id: number) => {
+    return Nft.findByPk(id)
+    .then((nft) => {
+      nft ? nft.destroy() : null;
+    });
+
+}
