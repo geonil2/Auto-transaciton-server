@@ -1,7 +1,7 @@
 {
-  "name": "Auto transaction server",
+  "name": "NFT Collections server",
   "version": "1.0.0",
-  "description": "Auto transaction server",
+  "description": "NFT Collections server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,17 +11,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geonil2/Auto-transaction-server.git"
+    "url": "git+https://github.com/geonil2/NFT-Collections-server.git"
   },
   "keywords": [
-    "Auto Transaction"
+    "NFT Collections IMMM immmapp"
   ],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/geonil2/Auto-transaction-server/issues"
+    "url": "https://github.com/geonil2/NFT-Collections-server/issues"
   },
-  "homepage": "https://github.com/geonil2/Auto-transaction-server#readme",
+  "homepage": "https://github.com/geonil2/NFT-Collections-server#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
