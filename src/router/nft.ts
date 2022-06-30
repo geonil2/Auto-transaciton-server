@@ -2,7 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import { body } from "express-validator";
 import * as nftController from '../controller/nft';
-import {createMetadata} from "../controller/nft";
+import {isAuth} from "../middleware/auth";
 
 const router = express.Router();
 
@@ -12,6 +12,6 @@ const validateUpdate = [
 
 router.get('/metadata', validateUpdate, nftController.getMetadata);
 router.post('/metadata', validateUpdate, nftController.createMetadata);
-router.delete('/metadata', validateUpdate, nftController.deleteMetadata);
+router.delete('/metadata', isAuth, validateUpdate, nftController.deleteMetadata);
 
 export default router;
