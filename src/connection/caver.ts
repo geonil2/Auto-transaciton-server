@@ -1,5 +1,5 @@
 import {config} from "../config";
-import Caver, {HttpProviderOptions} from "caver-js";
+import Caver from "caver-js";
 
 
 const accessKeyId = config.caver.accessKeyId;
