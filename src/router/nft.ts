@@ -12,6 +12,6 @@ const validateUpdate = [
 
 router.get('/metadata', validateUpdate, nftController.getMetadata);
 router.post('/metadata', validateUpdate, nftController.createMetadata);
-router.delete('/metadata', isAuth, validateUpdate, nftController.deleteMetadata);
+router.delete('/metadata', isAuth, nftController.deleteMetadata);
 
 export default router;
